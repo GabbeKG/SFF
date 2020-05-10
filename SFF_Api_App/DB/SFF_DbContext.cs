@@ -27,6 +27,7 @@ namespace SFF_Api_App.DB
             modelBuilder.Entity<Studio>().Property(r => r.Name).IsRequired();
             modelBuilder.Entity<Trivias>().Property(r => r.Title).IsRequired();
         }
+        public DbSet<SFF_Api_App.Models.Rented> Rented { get; set; }
 
     }
 }

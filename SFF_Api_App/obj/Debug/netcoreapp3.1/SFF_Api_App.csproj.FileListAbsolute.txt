@@ -297,8 +297,6 @@ C:\Users\Gabbe\source\repos\SFF2\SFF_Api_App\bin\Debug\netcoreapp3.1\runtimes\un
 C:\Users\Gabbe\source\repos\SFF2\SFF_Api_App\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Gabbe\source\repos\SFF2\SFF_Api_App\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Gabbe\source\repos\SFF2\SFF_Api_App\obj\Debug\netcoreapp3.1\SFF_Api_App.csprojAssemblyReference.cache
-C:\Users\Gabbe\source\repos\SFF2\SFF_Api_App\obj\Debug\netcoreapp3.1\SFF_Api_App.csproj.CoreCompileInputs.cache
-C:\Users\Gabbe\source\repos\SFF2\SFF_Api_App\obj\Debug\netcoreapp3.1\SFF_Api_App.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Gabbe\source\repos\SFF2\SFF_Api_App\obj\Debug\netcoreapp3.1\SFF_Api_App.RazorAssemblyInfo.cache
 C:\Users\Gabbe\source\repos\SFF2\SFF_Api_App\obj\Debug\netcoreapp3.1\SFF_Api_App.RazorAssemblyInfo.cs
 C:\Users\Gabbe\source\repos\SFF2\SFF_Api_App\obj\Debug\netcoreapp3.1\SFF_Api_App.AssemblyInfoInputs.cache

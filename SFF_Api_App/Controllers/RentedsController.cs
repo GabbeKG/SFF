@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Serialization;
 using SFF_Api_App.DB;
 using SFF_Api_App.Models;
+using System.Xml.Linq;
 
 namespace SFF_Api_App.Controllers
 {
@@ -40,6 +42,33 @@ namespace SFF_Api_App.Controllers
             }
 
             return rented;
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutIsRented(int id, bool rented, Rented rent)
+        {
+            if (id != rent.Id)
+            {
+                return BadRequest();
+            }
+            _context.Entry(rent).State = EntityState.Modified;
+            _context.Entry(rented).State = EntityState.Modified;
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!RentedExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
         }
 
         // PUT: api/Renteds/5
@@ -80,10 +109,21 @@ namespace SFF_Api_App.Controllers
         [HttpPost]
         public async Task<ActionResult<Rented>> PostRented(Rented rented)
         {
+            var amountRented = (from a in _context.Rented
+                                select rented.movie).Count();
+            if (amountRented < rented.movie.Stock)
+            {
             _context.Rented.Add(rented);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetRented", new { id = rented.Id }, rented);
+
+            }
+            else
+            {
+                return NoContent();
+            }
+
         }
 
         // DELETE: api/Renteds/5

@@ -10,6 +10,8 @@ using SFF_Api_App.Models;
 
 namespace SFF_Api_App.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class MoviesController : Controller
     {
         private readonly SFF_DbContext _context;
@@ -20,12 +22,14 @@ namespace SFF_Api_App.Controllers
         }
 
         // GET: Movies
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Movies.ToListAsync());
         }
 
-        // GET: Movies/Details/5
+        // GET: Movies/<insert id>
+        [HttpGet("{id}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -66,6 +70,7 @@ namespace SFF_Api_App.Controllers
         }
 
         // GET: Movies/Edit/5
+        [HttpPut("{id}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -117,6 +122,7 @@ namespace SFF_Api_App.Controllers
         }
 
         // GET: Movies/Delete/5
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

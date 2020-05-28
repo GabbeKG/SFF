@@ -12,48 +12,48 @@ namespace SFF_Api_App.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ReviewsController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly SFF_DbContext _context;
 
-        public ReviewsController(SFF_DbContext context)
+        public UsersController(SFF_DbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Reviews
+        // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Review>>> GetReviews()
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            return await _context.Reviews.ToListAsync();
+            return await _context.Users.ToListAsync();
         }
 
-        // GET: api/Reviews/5
+        // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Review>> GetReview(int id)
+        public async Task<ActionResult<User>> GetUser(string id)
         {
-            var review = await _context.Reviews.FindAsync(id);
+            var user = await _context.Users.FindAsync(id);
 
-            if (review == null)
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return review;
+            return user;
         }
 
-        // PUT: api/Reviews/5
+        // PUT: api/Users/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutReview(int id, Review review)
+        public async Task<IActionResult> PutUser(string id, User user)
         {
-            if (id != review.Id)
+            if (id != user.Username)
             {
                 return BadRequest();
             }
 
-            _context.Entry(review).State = EntityState.Modified;
+            _context.Entry(user).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +61,7 @@ namespace SFF_Api_App.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ReviewExists(id))
+                if (!UserExists(id))
                 {
                     return NotFound();
                 }
@@ -74,37 +74,51 @@ namespace SFF_Api_App.Controllers
             return NoContent();
         }
 
-        // POST: api/Reviews
+        // POST: api/Users
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Review>> PostReview(Review review)
+        public async Task<ActionResult<User>> PostUser(User user)
         {
-            _context.Reviews.Add(review);
-            await _context.SaveChangesAsync();
+            _context.Users.Add(user);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                if (UserExists(user.Username))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
-            return CreatedAtAction("GetReview", new { id = review.Id }, review);
+            return CreatedAtAction("GetUser", new { id = user.Username }, user);
         }
 
-        // DELETE: api/Reviews/5
+        // DELETE: api/Users/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Review>> DeleteReview(int id)
+        public async Task<ActionResult<User>> DeleteUser(string id)
         {
-            var review = await _context.Reviews.FindAsync(id);
-            if (review == null)
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
             {
                 return NotFound();
             }
 
-            _context.Reviews.Remove(review);
+            _context.Users.Remove(user);
             await _context.SaveChangesAsync();
 
-            return review;
+            return user;
         }
 
-        private bool ReviewExists(int id)
+        private bool UserExists(string id)
         {
-            return _context.Reviews.Any(e => e.Id == id);
+            return _context.Users.Any(e => e.Username == id);
         }
     }
 }

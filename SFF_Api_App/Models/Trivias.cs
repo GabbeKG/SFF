@@ -11,5 +11,6 @@ namespace SFF_Api_App.Models
         public string? Title { get; set; }
 
         public Movie Movie { get; set; }
+        public string trivia { get; set; }
     }
 }

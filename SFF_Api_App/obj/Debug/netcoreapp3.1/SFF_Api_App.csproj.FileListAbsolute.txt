@@ -170,7 +170,6 @@ C:\Users\Gabbe\source\repos\SFF2\SFF_Api_App\bin\Debug\netcoreapp3.1\SFF_Api_App
 C:\Users\Gabbe\source\repos\SFF2\SFF_Api_App\bin\Debug\netcoreapp3.1\SFF_Api_App.dll
 C:\Users\Gabbe\source\repos\SFF2\SFF_Api_App\bin\Debug\netcoreapp3.1\SFF_Api_App.pdb
 C:\Users\Gabbe\source\repos\SFF2\SFF_Api_App\bin\Debug\netcoreapp3.1\SFF_Api_App.Views.dll
-C:\Users\Gabbe\source\repos\SFF2\SFF_Api_App\bin\Debug\netcoreapp3.1\SFF_Api_App.Views.pdb
 C:\Users\Gabbe\source\repos\SFF2\SFF_Api_App\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\Gabbe\source\repos\SFF2\SFF_Api_App\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Gabbe\source\repos\SFF2\SFF_Api_App\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
